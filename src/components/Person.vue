@@ -27,25 +27,25 @@ import { textChangeRangeIsUnchanged } from 'typescript';
 
 <script lang="ts" setup name="Person1234">
 import { idText } from 'typescript';
-import { reactive } from 'vue';
+import { ref } from 'vue';
     //variables
 
-let car=reactive({
+let car=ref({
   brand:'奔驰',
   price:100
 })
 
-let games = reactive([
+let games = ref([
   {id:'ays01',name:'王者荣耀'},
   {id:'ays02',name:'英雄联盟'},
   {id:'ays03',name:'绝地求生'},
 ])
 
 function changePrice(){
-  car.brand='宝马'
+  car.value.brand='宝马'
 }
 function changeFirst(){
-  games[0].name='穿越火线'
+  games.value[0].name='穿越火线'
 }
 </script>
 <style scoped>
