@@ -1,10 +1,17 @@
 <template>
   <div class="person">
-    <h1>{{ name }}</h1>
+    <!-- <h1>{{ name }}</h1>
     <p>Age: {{ age }}</p>
     <button @click="changeName">修改名称</button>
     <button @click="changeAge">修改年龄</button>
-    <button @click="showTel">查看联系方式</button>
+    <button @click="showTel">查看联系方式</button> -->
+   <h2>汽车信息： 一辆{{ car.brand }}车，价值{{ car.price }}万</h2>
+   <button @click="changePrice">修改汽车品牌</button>
+   <h2>游戏信息：</h2>
+   <ul>
+     <li v-for="game in games" :key="game.id">{{ game.name }}</li>
+     </ul>
+     <button @click="changeFirst">修改第一个游戏</button>
   </div>
 </template>
 <!-- <script lang="ts">
@@ -19,23 +26,27 @@ import { textChangeRangeIsUnchanged } from 'typescript';
 </script> -->
 
 <script lang="ts" setup name="Person1234">
-
-import { ref } from 'vue';
+import { idText } from 'typescript';
+import { reactive } from 'vue';
     //variables
 
-let name = ref('张三');
-    let age = ref(18);
-    let tel = '1234567890';
-    //methods
-    function changeName() {
-      name.value = '李四';
-    }
-    function changeAge() {
-      age.value = 20;
-    }
-    function showTel() {
-      alert(tel);
-    }
+let car=reactive({
+  brand:'奔驰',
+  price:100
+})
+
+let games = reactive([
+  {id:'ays01',name:'王者荣耀'},
+  {id:'ays02',name:'英雄联盟'},
+  {id:'ays03',name:'绝地求生'},
+])
+
+function changePrice(){
+  car.brand='宝马'
+}
+function changeFirst(){
+  games[0].name='穿越火线'
+}
 </script>
 <style scoped>
 .person {
